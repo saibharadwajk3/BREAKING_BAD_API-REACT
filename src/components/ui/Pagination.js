@@ -1,5 +1,9 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router";
 import Characters from "../cast/Characters";
+import Episodes from "../cast/Episodes";
+import Deaths from "../cast/Deaths";
+import Quotes from "../cast/Quotes";
 
 const Pagination = ({ items, isLoading }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -77,9 +81,22 @@ const Pagination = ({ items, isLoading }) => {
     pageDecrementBtn = <li onClick={handlePrevBtn}>&hellip;</li>;
   }
 
+  const location = useLocation();
+
   return (
     <>
-      <Characters items={currentItems} isLoading={isLoading} />
+      {location.pathname === "/" && (
+        <Characters items={currentItems} isLoading={isLoading} />
+      )}
+      {location.pathname === "/episodes" && (
+        <Episodes items={currentItems} isLoading={isLoading} />
+      )}
+      {location.pathname === "/deaths" && (
+        <Deaths items={currentItems} isLoading={isLoading} />
+      )}
+      {location.pathname === "/quotes" && (
+        <Quotes items={currentItems} isLoading={isLoading} />
+      )}
       <ul className="pageNumbers">
         <li>
           <button

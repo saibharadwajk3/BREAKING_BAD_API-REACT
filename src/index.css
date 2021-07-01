@@ -34,11 +34,11 @@ a {
 }
 
 header {
-  height: 200px;
+  height: 150px;
 }
 
 header img {
-  width: 200px;
+  width: 180px;
 }
 
 .center {
@@ -127,6 +127,129 @@ input[type="text"] {
   margin: auto;
   display: block;
 }
+/* listStyles */
+
+ul {
+  list-style-type: none;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+li .nav-link {
+  display: block;
+  color: #ffffff;
+  text-align: center;
+  padding: 14px 30px;
+  text-decoration: none;
+  opacity: 0.6;
+}
+
+ul li .nav-link {
+  padding-bottom: 3px;
+}
+li .activa {
+  opacity: 1;
+  border-bottom: 2px solid #e62429;
+}
+
+.activa:hover {
+  cursor: pointer;
+  color: #ffffff;
+}
+
+li .nav-link:hover:not(.activa) {
+  cursor: pointer;
+  border-bottom: 2px solid #e62429;
+  color: #ffffff;
+  opacity: 1;
+}
+
+/* form styles */
+/* form {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  top: 10%;
+  right: 10%;
+  padding: 5px;
+   transform: translate(-50%, -50%); 
+  border-radius: 50px;
+  border: 4px solid #fff;
+  box-sizing: border-box;
+  background: #fff;
+  transition: 1s;
+}
+
+input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 0;
+  width: 85%;
+  height: 52px;
+  line-height: 75px;
+  outline: 0;
+  display: none;
+  font-size: 26px;
+  border-radius: 25px;
+  padding: 0 20px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  color: red;
+  background: black;
+}
+
+i.fa {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 52px;
+  height: 52px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 25px;
+  transition: 0.8s;
+  color: tomato;
+  background: #262626;
+  padding: 15px;
+} 
+
+*/
+
+form:hover {
+  width: 350px;
+  cursor: pointer;
+}
+
+/* episodes,deaths ,quotes*/
+.deaths,
+.episodes,
+.quotes {
+  background-color: #153a1e;
+}
+
+figure blockquote {
+  display: flex;
+  flex-direction: row;
+  text-align: justify;
+  height: 80%;
+}
+blockquote {
+  border-radius: 5px;
+}
+blockquote p {
+  padding: 15px;
+  background: #153a1e;
+}
+
+blockquote p::before {
+  content: "\201C";
+}
+
+blockquote p::after {
+  content: "\201D";
+}
 
 /* pagination */
 
@@ -188,6 +311,9 @@ input[type="text"] {
   .cards {
     grid-template-columns: repeat(2, 1fr);
   }
+  li .nav-link {
+    padding: 8px 12px;
+  }
 }
 
 @media (max-width: 500px) {
@@ -198,5 +324,8 @@ input[type="text"] {
     width: 100%;
     height: 300px;
     object-fit: contain;
+  }
+  li .nav-link {
+    padding: 4px 6px;
   }
 }
