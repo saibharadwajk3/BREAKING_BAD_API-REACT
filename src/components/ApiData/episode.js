@@ -1,5 +1,5 @@
-import React from "react";
-const charactersString = "";
+import React from "react"
+const charactersString = ""
 const episode = ({ item }) => {
   return (
     <div class="card-deck">
@@ -23,16 +23,16 @@ const episode = ({ item }) => {
 
             <p>
               {item.characters.map((character, index) =>
-                index == 5
+                index == 4
                   ? `${charactersString}${character}`
-                  : index < 4 && `${charactersString}${character},`
+                  : index < 3 && `${charactersString}${character},`
               )}
             </p>
           </>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default episode;
+export default episode

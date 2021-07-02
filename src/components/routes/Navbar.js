@@ -1,8 +1,8 @@
-import React from "react";
-import { useLocation } from "react-router";
-import { Link } from "react-router-dom";
+import React from "react"
+import { useLocation } from "react-router"
+import { Link } from "react-router-dom"
 const Navbar = () => {
-  const location = useLocation();
+  const location = useLocation()
 
   return (
     <nav className="card-header links">
@@ -50,7 +50,7 @@ const Navbar = () => {
         </li>
       </ul>
     </nav>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

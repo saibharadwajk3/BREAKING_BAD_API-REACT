@@ -1,26 +1,23 @@
-import React, { useState, useEffect } from "react";
-import EPisodes from "../cast/Episodes";
-import axios from "axios";
-import Pagination from "../ui/Pagination";
-const Episodes = () => {
-  const [items, setItems] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  useEffect(() => {
-    const getItems = async () => {
-      const result = await axios(`https://www.breakingbadapi.com/api/episodes`);
-      //console.log(result.data)
-      setItems(result.data);
-      setIsLoading(false);
-    };
-    getItems();
-  }, []);
+import CustomFetch from "../../useFetch"
+import Pagination from "../ui/Pagination"
+const Episodes = ({ SearchQuery }) => {
+  const url = `https://www.breakingbadapi.com/api/episodes/${SearchQuery}`
+  const { items, isLoading, error } = CustomFetch(url)
 
-  return (
-    <>
-      {/* <EPisodes items={items} isLoading={isLoading} />; */}
-      <Pagination items={items} isLoading={isLoading} />;
-    </>
-  );
-};
+  if (error === "Server Error") {
+    return <h3 className="Error">Server Error ..Something wrong on our side</h3>
+  } else if (
+    (items.length == 0 && isLoading == false) ||
+    error == "Network Error"
+  ) {
+    return <h3 className="Error">Sorry😞..No matching item found</h3>
+  } else {
+    return (
+      <>
+        <Pagination items={items} isLoading={isLoading} />
+      </>
+    )
+  }
+}
 
-export default Episodes;
+export default Episodes

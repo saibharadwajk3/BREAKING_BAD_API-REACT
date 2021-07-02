@@ -1,28 +1,25 @@
-import React, { useState, useEffect } from "react";
-import Characters from "../cast/Characters";
-import axios from "axios";
-import Pagination from "../ui/Pagination";
-const Home = () => {
-  const [items, setItems] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  useEffect(() => {
-    const getItems = async () => {
-      const result = await axios(
-        `https://www.breakingbadapi.com/api/characters`
-      );
+import useFetch from "../../useFetch"
 
-      setItems(result.data);
-      setIsLoading(false);
-    };
-    getItems();
-  }, []);
+import Pagination from "../ui/Pagination"
+const Home = ({ SearchQuery }) => {
+  const url = `https://www.breakingbadapi.com/api/characters?name=${SearchQuery}`
+  const { items, isLoading, error } = useFetch(url)
 
-  return (
-    <>
-      {/* <Characters items={items} isLoading={isLoading} />; */}
-      <Pagination items={items} isLoading={isLoading} />;
-    </>
-  );
-};
+  if (error === "Network Error") {
+    return (
+      <h3 className="Error">
+        Network Error..!Make sure you are connected to internet
+      </h3>
+    )
+  } else if (items.length == 0 && isLoading == false) {
+    return <h3 className="Error">Sorry😞..No matching item found</h3>
+  } else {
+    return (
+      <>
+        <Pagination items={items} isLoading={isLoading} />
+      </>
+    )
+  }
+}
 
-export default Home;
+export default Home

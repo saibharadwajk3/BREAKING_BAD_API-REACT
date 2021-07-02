@@ -1,27 +1,31 @@
-import React, { useState, useEffect } from "react";
-import QUotes from "../cast/Quotes";
-import axios from "axios";
-import Pagination from "../ui/Pagination";
+import useFetch from "../../useFetch"
 
-const Quotes = () => {
-  const [items, setItems] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  useEffect(() => {
-    const getItems = async () => {
-      const result = await axios(`https://www.breakingbadapi.com/api/quotes`);
+import Pagination from "../ui/Pagination"
 
-      setItems(result.data);
-      setIsLoading(false);
-    };
-    getItems();
-  }, []);
+const Quotes = ({ SearchQuery }) => {
+  console.log(SearchQuery)
+  const url =
+    SearchQuery == ""
+      ? `https://www.breakingbadapi.com/api/quotes`
+      : `https://www.breakingbadapi.com/api/quote?author=${SearchQuery}`
 
-  return (
-    <>
-      {/* <QUotes items={items} isLoading={isLoading} /> */}
-      <Pagination items={items} isLoading={isLoading} />;
-    </>
-  );
-};
+  const { items, isLoading, error } = useFetch(url)
 
-export default Quotes;
+  if (error === "Network Error") {
+    return (
+      <h3 className="Error">
+        Network Error..!Make sure you are connected to internet
+      </h3>
+    )
+  } else if (items.length == 0 && isLoading == false) {
+    return <h3 className="Error">Sorry😞..No matching item found</h3>
+  } else {
+    return (
+      <>
+        <Pagination items={items} isLoading={isLoading} />
+      </>
+    )
+  }
+}
+
+export default Quotes

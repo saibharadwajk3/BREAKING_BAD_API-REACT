@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 
 const quote = ({ item }) => {
   return (
@@ -10,7 +10,7 @@ const quote = ({ item }) => {
         ~{item.author} <cite>Brave New World</cite>
       </figcaption>
     </figure>
-  );
-};
+  )
+}
 
-export default quote;
+export default quote

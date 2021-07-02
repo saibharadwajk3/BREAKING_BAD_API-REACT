@@ -1,47 +1,51 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import axios from "axios";
-import "./index.css";
+import React, { useState } from "react"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+
+import "./index.css"
 //components
-import Header from "./components/ui/Header";
-import Search from "./components/ui/Search";
-import Pagination from "./components/ui/Pagination";
-import Navbar from "./components/routes/Navbar";
+import Header from "./components/ui/Header"
+import Navbar from "./components/routes/Navbar"
 
 //routes
-import Home from "./components/routes/Home";
-import Episodes from "./components/routes/Episodes";
-import Deaths from "./components/routes/Deaths";
-import Quotes from "./components/routes/Quotes";
-import Error from "./components/routes/Error";
+import Home from "./components/routes/Home"
+import Episodes from "./components/routes/Episodes"
+import Deaths from "./components/routes/Deaths"
+import Quotes from "./components/routes/Quotes"
+import Error from "./components/routes/Error"
 
 function App() {
+  const [query, setQuery] = useState("")
+
+  const doSomething = (query) => {
+    setQuery(query)
+  }
+
   return (
     <Router>
       <div className="container">
-        <Header />
+        <Header getQuery={doSomething} />
         <Navbar />
         <Switch>
           <Route exact path="/">
-            <Home />
+            <Home SearchQuery={query} />
           </Route>
           <Route exact path="/episodes">
-            <Episodes />{" "}
+            <Episodes SearchQuery={query} />
           </Route>
           <Route exact path="/deaths">
-            <Deaths />{" "}
+            <Deaths SearchQuery={query} />
           </Route>
           <Route exact path="/quotes">
-            <Quotes />{" "}
+            <Quotes SearchQuery={query} />
           </Route>
 
           <Route path="*">
-            <Error />{" "}
+            <Error />
           </Route>
         </Switch>
       </div>
     </Router>
-  );
+  )
 }
 
-export default App;
+export default App
