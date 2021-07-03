@@ -3,9 +3,8 @@ import useFetch from "../../useFetch"
 import Pagination from "../ui/Pagination"
 
 const Quotes = ({ SearchQuery }) => {
-  console.log(SearchQuery)
   const url =
-    SearchQuery == ""
+    SearchQuery === ""
       ? `https://www.breakingbadapi.com/api/quotes`
       : `https://www.breakingbadapi.com/api/quote?author=${SearchQuery}`
 
@@ -17,7 +16,7 @@ const Quotes = ({ SearchQuery }) => {
         Network Error..!Make sure you are connected to internet
       </h3>
     )
-  } else if (items.length == 0 && isLoading == false) {
+  } else if (items.length === 0 && isLoading === false) {
     return <h3 className="Error">Sorry😞..No matching item found</h3>
   } else {
     return (

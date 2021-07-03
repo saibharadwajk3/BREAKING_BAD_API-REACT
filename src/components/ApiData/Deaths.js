@@ -9,7 +9,7 @@ const Deaths = ({ items, isLoading }) => {
     return (
       <section className="cards">
         {items.map((item) => {
-          return <Death item={item} />
+          return <Death key={item.id} item={item} />
         })}
       </section>
     )

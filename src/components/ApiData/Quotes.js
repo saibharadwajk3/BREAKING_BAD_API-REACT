@@ -9,7 +9,7 @@ const Quotes = ({ items, isLoading }) => {
     return (
       <section className="cards">
         {items.map((item) => {
-          return <Quote item={item} />
+          return <Quote key={item.id} item={item} />
         })}
       </section>
     )

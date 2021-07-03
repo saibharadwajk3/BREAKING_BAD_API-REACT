@@ -46,7 +46,6 @@ header img {
 
 .center {
   display: grid;
-  /* align-items: center;*/
 }
 
 .search {
@@ -144,7 +143,7 @@ input[type="text"] {
 .loader {
   width: 400px;
   height: 200px;
-  margin: auto;
+  margin: 0 auto;
   display: block;
 }
 /* listStyles */
@@ -200,6 +199,12 @@ li .nav-link:hover:not(.activa) {
 }
 .quotes {
   background-color: #153a1e;
+}
+.quotes:hover,
+.deaths:hover,
+.episodes:hover {
+  transform: translate(5px, -5px);
+  box-shadow: 0px 0px 5px 5px rgba(236, 13, 24, 0.685);
 }
 
 figure blockquote {
@@ -283,9 +288,9 @@ blockquote p::after {
   .cards {
     grid-template-columns: repeat(2, 1fr);
   }
-  li .nav-link {
+  .card-header li .nav-link {
     margin-top: 20px;
-    padding: 8px 12px;
+    padding: 8px 15px;
   }
   .center .logo {
     margin-top: 10px;

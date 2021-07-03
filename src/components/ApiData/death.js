@@ -3,9 +3,9 @@ import React from "react"
 const death = ({ item }) => {
   if (item.name === undefined) {
     return (
-      <div key={item.id} class="card-deck">
-        <div class="card deaths">
-          <div class="card-body text-center">
+      <div key={item.id} className="card-deck">
+        <div className="card deaths">
+          <div className="card-body text-center">
             <h1>
               <strong>Death Of:</strong> {item.death}
             </h1>

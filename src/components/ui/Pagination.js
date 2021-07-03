@@ -42,7 +42,7 @@ const Pagination = ({ items, isLoading }) => {
           key={number}
           id={number}
           onClick={handleClick}
-          className={currentPage == number ? "active" : "?"}
+          className={currentPage === number ? "active" : "?"}
         >
           {number}
         </li>
@@ -64,7 +64,7 @@ const Pagination = ({ items, isLoading }) => {
 
   const handlePrevBtn = () => {
     setCurrentPage(currentPage - 1)
-    if ((currentPage - 1) % pageNumberLimit == 0) {
+    if ((currentPage - 1) % pageNumberLimit === 0) {
       setMaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit)
       setMinPageNumberLimit(minPageNumberLimit - pageNumberLimit)
     }
@@ -97,12 +97,12 @@ const Pagination = ({ items, isLoading }) => {
       {location.pathname === "/quotes" && (
         <Quotes items={currentItems} isLoading={isLoading} />
       )}
-      {isLoading == false && (
+      {isLoading === false && (
         <ul className="pageNumbers">
           <li>
             <button
               onClick={handlePrevBtn}
-              disable={currentPage == pages[0] ? "true" : "false"}
+              disable={currentPage === pages[0] ? "true" : "false"}
             >
               Prev
             </button>
@@ -114,7 +114,7 @@ const Pagination = ({ items, isLoading }) => {
             <button
               onClick={handleNextBtn}
               disable={
-                currentPage == pages[pages.length - 1] ? "true" : "false"
+                currentPage === pages[pages.length - 1] ? "true" : "false"
               }
             >
               Next
@@ -123,7 +123,7 @@ const Pagination = ({ items, isLoading }) => {
         </ul>
       )}
 
-      {isLoading == false && (
+      {isLoading === false && (
         <div className="loadMore">
           <button className="btn" onClick={handleLoadMore}>
             Load More

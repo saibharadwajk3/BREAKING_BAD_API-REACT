@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from "react"
 import useFetch from "../../useFetch"
 import Pagination from "../ui/Pagination"
 
 const Deaths = ({ SearchQuery }) => {
   const url =
-    SearchQuery == ""
+    SearchQuery === ""
       ? `https://www.breakingbadapi.com/api/deaths`
       : `https://www.breakingbadapi.com/api/death-count?name=${SearchQuery}`
   const { items, isLoading, error } = useFetch(url)
-  console.log(error)
 
   if (error === "Network Error") {
     return (
@@ -16,7 +14,7 @@ const Deaths = ({ SearchQuery }) => {
         Network Error..!Make sure you are connected to internet
       </h3>
     )
-  } else if (items.length == 0 && isLoading == false) {
+  } else if (items.length === 0 && isLoading === false) {
     return <h3 className="Error">Sorry😞..No matching item found</h3>
   } else {
     return (

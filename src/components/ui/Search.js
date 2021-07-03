@@ -28,7 +28,6 @@ const Search = ({ getQuery }) => {
       <form action="">
         <input
           type="text"
-          //className="form-control"
           placeholder={placeholder}
           autoFocus
           value={text}

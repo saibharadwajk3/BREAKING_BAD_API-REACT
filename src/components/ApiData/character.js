@@ -1,5 +1,4 @@
 import React from "react"
-
 const character = ({ item }) => {
   return (
     <div className="card">

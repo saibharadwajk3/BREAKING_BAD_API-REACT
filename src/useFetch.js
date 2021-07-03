@@ -10,7 +10,7 @@ const useFetch = (url) => {
       try {
         const result = await axios(url)
 
-        if (result.status != 200) {
+        if (result.status !== 200) {
           setError("Server Error")
         }
 

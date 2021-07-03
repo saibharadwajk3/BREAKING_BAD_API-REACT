@@ -1,7 +1,6 @@
 import React from "react"
 import Loader from "../ui/Loader"
 import Episode from "./episode"
-
 const Episodes = ({ items, isLoading }) => {
   if (isLoading) {
     return <Loader />

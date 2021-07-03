@@ -7,8 +7,8 @@ const Episodes = ({ SearchQuery }) => {
   if (error === "Server Error") {
     return <h3 className="Error">Server Error ..Something wrong on our side</h3>
   } else if (
-    (items.length == 0 && isLoading == false) ||
-    error == "Network Error"
+    (items.length === 0 && isLoading === false) ||
+    error === "Network Error"
   ) {
     return <h3 className="Error">Sorry😞..No matching item found</h3>
   } else {
