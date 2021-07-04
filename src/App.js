@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import "./index.css"
 //components
@@ -13,10 +14,30 @@ import Quotes from "./components/routes/Quotes"
 import Error from "./components/routes/Error"
 
 function App() {
-  const [query, setQuery] = useState("")
+  console.log(1)
+  const [characterQuery, setCharacterQuery] = useState("")
+  const [episodeQuery, setEpisodeQuery] = useState("")
+  const [deathQuery, setDeathQuery] = useState("")
+  const [quoteQuery, setQuoteQuery] = useState("")
+  //  let newPath='';
+  let newPath = ""
 
-  const doSomething = (query) => {
-    setQuery(query)
+  const doSomething = ({ text, path }) => {
+    switch (path) {
+      case "episodes":
+        setEpisodeQuery(text)
+        break
+      case "deaths":
+        setDeathQuery(text)
+        break
+      case "quotes":
+        setQuoteQuery(text)
+        break
+      default:
+        setCharacterQuery(text)
+    }
+    // setNewPath(path)
+    newPath = path
   }
 
   return (
@@ -26,16 +47,32 @@ function App() {
         <Navbar />
         <Switch>
           <Route exact path="/">
-            <Home SearchQuery={query} />
+            <Home
+              SearchQuery={characterQuery}
+              newPath={newPath}
+              setCharacterQuery={setCharacterQuery}
+            />
           </Route>
           <Route exact path="/episodes">
-            <Episodes SearchQuery={query} />
+            <Episodes
+              SearchQuery={episodeQuery}
+              newPath={newPath}
+              setEpisodeQuery={setEpisodeQuery}
+            />
           </Route>
           <Route exact path="/deaths">
-            <Deaths SearchQuery={query} />
+            <Deaths
+              SearchQuery={deathQuery}
+              newPath={newPath}
+              setDeathQuery={setDeathQuery}
+            />
           </Route>
           <Route exact path="/quotes">
-            <Quotes SearchQuery={query} />
+            <Quotes
+              SearchQuery={quoteQuery}
+              newPath={newPath}
+              setQuoteQuery={setQuoteQuery}
+            />
           </Route>
 
           <Route path="*">

@@ -1,8 +1,11 @@
 import useFetch from "../../useFetch"
-
+import { useEffect } from "react"
 import Pagination from "../ui/Pagination"
 
-const Quotes = ({ SearchQuery }) => {
+const Quotes = ({ SearchQuery, newPath, setQuoteQuery }) => {
+  useEffect(() => {
+    setQuoteQuery("")
+  }, [newPath])
   const url =
     SearchQuery === ""
       ? `https://www.breakingbadapi.com/api/quotes`

@@ -1,6 +1,11 @@
 import CustomFetch from "../../useFetch"
 import Pagination from "../ui/Pagination"
-const Episodes = ({ SearchQuery }) => {
+import { useEffect } from "react"
+
+const Episodes = ({ SearchQuery, newPath, setEpisodeQuery }) => {
+  useEffect(() => {
+    setEpisodeQuery("")
+  }, [newPath])
   const url = `https://www.breakingbadapi.com/api/episodes/${SearchQuery}`
   const { items, isLoading, error } = CustomFetch(url)
 

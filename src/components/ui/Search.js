@@ -2,13 +2,20 @@ import React, { useState } from "react"
 import { useLocation } from "react-router"
 const Search = ({ getQuery }) => {
   const [text, setText] = useState("")
-  const onChange = (query) => {
-    setText(query)
-    getQuery(query)
-  }
+  // const onChange = (query) => {
+  //   setText(query)
+  //   getQuery(query)
+  // }
   const location = useLocation()
   let placeholder = ""
   const path = location.pathname.substring(1)
+  const onSubmit = (e) => {
+    e.preventDefault()
+    console.log(text)
+    getQuery({ text, path })
+    setText("")
+  }
+
   switch (path) {
     case "episodes":
       placeholder = "Search Episode_id ex @ 60"
@@ -25,13 +32,13 @@ const Search = ({ getQuery }) => {
 
   return (
     <section className="search">
-      <form action="">
+      <form onSubmit={onSubmit}>
         <input
           type="text"
           placeholder={placeholder}
           autoFocus
           value={text}
-          onChange={(e) => onChange(e.target.value)}
+          onChange={(e) => setText(e.target.value)}
         />
       </form>
     </section>

@@ -5,9 +5,11 @@ const episode = ({ item }) => {
     <div className="card-deck">
       <div className="card episodes">
         <div className="card-body text-center">
-          <h1>
-            <strong>Title:</strong> {item.title}
-          </h1>
+          <div>
+            <h1>
+              <strong>Title:</strong> {item.title}
+            </h1>
+          </div>
 
           <h5>
             <strong>Season:</strong> {item.season}

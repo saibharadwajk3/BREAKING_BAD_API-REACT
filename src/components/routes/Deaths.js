@@ -1,7 +1,10 @@
 import useFetch from "../../useFetch"
 import Pagination from "../ui/Pagination"
-
-const Deaths = ({ SearchQuery }) => {
+import { useEffect } from "react"
+const Deaths = ({ SearchQuery, newPath, setDeathQuery }) => {
+  useEffect(() => {
+    setDeathQuery("")
+  }, [newPath])
   const url =
     SearchQuery === ""
       ? `https://www.breakingbadapi.com/api/deaths`
