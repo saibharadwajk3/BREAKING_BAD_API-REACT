@@ -15,12 +15,18 @@ const Quotes = ({ SearchQuery, newPath, setQuoteQuery }) => {
 
   if (error === "Network Error") {
     return (
-      <h3 className="Error">
-        Network Error..!Make sure you are connected to internet
-      </h3>
+      <div className="Error">
+        🌪️
+        <h4>Network Failed, Please Retry...</h4>
+      </div>
     )
   } else if (items.length === 0 && isLoading === false) {
-    return <h3 className="Error">Sorry😞..No matching item found</h3>
+    return (
+      <div className="Error">
+        🐶
+        <h4>No Matches Found</h4>
+      </div>
+    )
   } else {
     return (
       <>
@@ -29,5 +35,4 @@ const Quotes = ({ SearchQuery, newPath, setQuoteQuery }) => {
     )
   }
 }
-
 export default Quotes

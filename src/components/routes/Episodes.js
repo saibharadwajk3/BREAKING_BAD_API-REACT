@@ -10,12 +10,17 @@ const Episodes = ({ SearchQuery, newPath, setEpisodeQuery }) => {
   const { items, isLoading, error } = CustomFetch(url)
 
   if (error === "Server Error") {
-    return <h3 className="Error">Server Error ..Something wrong on our side</h3>
+    return <h3 className="Error">Server Error ..</h3>
   } else if (
     (items.length === 0 && isLoading === false) ||
     error === "Network Error"
   ) {
-    return <h3 className="Error">Sorry😞..No matching item found</h3>
+    return (
+      <div className="Error">
+        🐶
+        <h4>No Matches Found</h4>
+      </div>
+    )
   } else {
     return (
       <>
